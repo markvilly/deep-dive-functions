@@ -143,10 +143,11 @@ for (const elements of flightInfo) {
 
   //   console.log(noUnderscoreElements);
   const [data1, data2, data3, data4] = noUnderscoreElements.split(";");
-  console.log(
-    data1,
-    data2.slice(0, 3).toUpperCase(),
-    data3.slice(0, 3).toUpperCase(),
-    data4.replace(":", "h")
-  );
+
+  //   console.log(data1);
+  if (data1.toLowerCase().includes("delayed")) {
+    console.log(` ${"🔴" + data1} from ${data2} to ${data3} (${data4})`);
+  } else {
+    console.log(` ${data1} from ${data2} to ${data3} (${data4})`);
+  }
 }
