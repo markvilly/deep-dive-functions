@@ -138,6 +138,8 @@ const flights =
 
 const flightInfo = flights.split("+");
 
+const getCode = (str) => str.slice(0, 3).toUpperCase();
+
 for (const elements of flightInfo) {
   const noUnderscoreElements = elements.replace(/_/g, " ");
 
@@ -146,8 +148,16 @@ for (const elements of flightInfo) {
 
   //   console.log(data1);
   if (data1.toLowerCase().includes("delayed")) {
-    console.log(` ${"🔴" + data1} from ${data2} to ${data3} (${data4})`);
+    console.log(
+      ` ${"🔴" + data1} from ${getCode(data2)} to ${getCode(
+        data3
+      )} (${data4})`.padStart(50)
+    );
   } else {
-    console.log(` ${data1} from ${data2} to ${data3} (${data4})`);
+    console.log(
+      ` ${data1.padStart(20)} from ${getCode(data2)} to ${getCode(
+        data3
+      )} (${data4.replace(":", "h")}`.padStart(50)
+    );
   }
 }
